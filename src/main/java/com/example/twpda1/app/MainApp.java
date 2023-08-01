@@ -1,4 +1,4 @@
-package com.example.twpda1;
+package com.example.twpda1.app;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,10 +10,11 @@ import java.io.IOException;
 public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("/com/example/twpda1/main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 980, 720);
-        stage.setTitle("Hello!");
+        stage.setTitle("Two Way Pushdown Automata");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 
