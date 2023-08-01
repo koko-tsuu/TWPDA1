@@ -1,0 +1,23 @@
+4
+A B C D
+3
+a b c
+¢
+$
+3
+a b Z
+10
+A ¢ Z 1 A Z
+A a Z 1 A a
+A b Z 0 B Z
+B b Z 1 B Z
+B c Z -1 C Z
+C b a -1 C Z
+C a Z 1 D Z
+D $ * 1 D Z
+D c b 1 D Z
+D b Z 1 D b
+*
+A
+1
+D

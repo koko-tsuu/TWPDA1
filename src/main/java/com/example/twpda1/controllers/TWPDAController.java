@@ -45,6 +45,7 @@ public class TWPDAController {
     public List<String> finalStates = new ArrayList<>();
 
     public List<StackPane> circlesList = new ArrayList<>();
+    public String initPSymbol = "";
 
     private double circleRadius = 30; // Set the radius of the circle (adjust as needed)
     private double circleX = 200; // Set the X position of the circle (adjust as needed)
@@ -117,13 +118,16 @@ public class TWPDAController {
                 }
 
             } else if (i == 10 + numberOfTransitions-1) {
-                //eleventh line, assign a start state
-                startState = line.trim();
+                //11 line, assign a start state
+                initPSymbol = line.trim();
             } else if (i == 11 + numberOfTransitions-1) {
-                //twelfth line, assign number of final states to a variable
+                //12th line, assign a start state
+                startState = line.trim();
+            } else if (i == 12 + numberOfTransitions-1) {
+                //13th line, assign number of final states to a variable
                 numberofFStates = Integer.parseInt(line);
-            }  else if (i == 12 + numberOfTransitions-1) {
-                //thirteenth line, get the list of final states
+            }  else if (i == 13 + numberOfTransitions-1) {
+                //14th line, get the list of final states
                 String[] finalStatesArray = line.split(" ");
                 finalStates.addAll(Arrays.asList(finalStatesArray));
             }

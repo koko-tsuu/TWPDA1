@@ -9,6 +9,7 @@
 //number of transitions
 //transitions in the format of 
 //(state) (input) (pushdown) (dir) (state) (pushdown)
+//initial pushdown symbol
 //start state
 //number of final states
 //list of final states
