@@ -59,10 +59,10 @@ public class LogicController {
         System.out.println("This is the input:" + inputStr);
 
         stk.push(twpdaController.initPSymbol);
-        String newInputStr = twpdaController.leftEndmarker + inputStr;
-        newInputStr = newInputStr.concat(twpdaController.rightEndmarker);
+//        String newInputStr = twpdaController.leftEndmarker + inputStr;
+//        newInputStr = newInputStr.concat(twpdaController.rightEndmarker);
 
-        boolean isAccepted = TWPDAImp(newInputStr, startState, stk, 0);
+        boolean isAccepted = TWPDAImp(inputStr, startState, stk, 0);
 
         System.out.println(isAccepted);
     }
@@ -76,16 +76,31 @@ public class LogicController {
             if (twpdaController.finalStates.contains(currentState) && stack.isEmpty()) {
                 return true; // Accepting computation path found
             }
+
+            System.out.println("false");
             return false; // No accepting computation path found
         }
 
         char currentInput = inputStr.charAt(inputPosition);
         List<String> currentTransitions = transitions.get(currentState);
         List<String> matchingTransitions = findTransitionsForInput(currentTransitions, currentInput);
+        List<String> lambdaTransitions = findTransitionsForInput(currentTransitions, 'Z');
+
+        matchingTransitions.addAll(lambdaTransitions);
 
         System.out.println("curr state: " + currentState);
         System.out.println("curr stack: " + stack);
         System.out.println("curr head: " + currentInput);
+
+        if(currentInput == '¢' || currentInput == '$') {
+            int newInputPosition = inputPosition + 1;
+            if(newInputPosition < inputStr.length()) {
+                if (TWPDAImp(inputStr, currentState, stack, newInputPosition)) {
+                    return true; // Accepting computation path found
+                }
+            }
+
+        }
 
         for (String transition : matchingTransitions) {
 
@@ -102,6 +117,7 @@ public class LogicController {
             if (!popSymbol.equals("Z")) {
                 if (!newStack.isEmpty() && newStack.peek().equals(popSymbol)) {
                     newStack.pop();
+                    System.out.println("popped " + popSymbol);
                 } else {
                     // Crash: Pop symbol mismatch, continue with next transition
                     continue;
@@ -111,10 +127,13 @@ public class LogicController {
             // Check for push operation
             if (!pushSymbol.equals("Z")) {
                 newStack.push(pushSymbol);
+                System.out.println("pushed " + pushSymbol);
             }
 
             // Move input head based on head movement
             int newInputPosition = inputPosition + headMovement;
+
+            System.out.println("newinputpos: " + newInputPosition);
 
             // Make a recursive call with the updated state, stack, and input position
             if (TWPDAImp(inputStr, nextState, newStack, newInputPosition)) {
