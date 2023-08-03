@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.twpda1.controllers.MainController"
-            fx:id = "rootPane">
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="355.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.twpda1.controllers.MainController">
    <children>
       <MenuBar layoutX="-3.0" maxWidth="-Infinity" prefHeight="27.0" prefWidth="985.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-                  <MenuItem mnemonicParsing="false" text="New"/>
+                  <MenuItem mnemonicParsing="false" text="New Window" />
                   <MenuItem mnemonicParsing="false" text="Save" />
-                  <MenuItem mnemonicParsing="false" text="Upload Machine Definition" onAction="#chooseFile"/>
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Input">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Step by State" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
@@ -32,5 +30,87 @@
           </Menu>
         </menus>
       </MenuBar>
+      <TextArea fx:id="textField" layoutX="204.0" layoutY="52.0" maxHeight="33.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="343.0" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font></TextArea>
+      <Line endX="506.0" layoutX="94.0" layoutY="162.0" startX="-100.0" strokeDashOffset="1.0" strokeLineCap="ROUND">
+         <effect>
+            <Glow />
+         </effect>
+      </Line>
+      <Text fx:id="promptText" layoutX="63.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter input string:" visible="false">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Button fx:id="runBtn" layoutX="229.0" layoutY="107.0" mnemonicParsing="false" onAction="#makeAppear" prefWidth="136.0" text="Run (Step by State)" visible="false">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="Step" layoutX="14.0" layoutY="314.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="118.0" text="Step" visible="false">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="Reset" layoutX="145.0" layoutY="314.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="118.0" text="Reset" visible="false">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="uploadBtn" layoutX="195.0" layoutY="61.0" mnemonicParsing="false" onAction="#promptInput" prefHeight="49.0" prefWidth="204.0" text="Upload Machine Definition">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Text fx:id="state" layoutX="21.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current State:" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="stack" layoutX="21.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stack:" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="string" layoutX="21.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Input String:" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <TextFlow fx:id="stringTxt" layoutX="123.0" layoutY="185.0">
+         <Text fx:id="readInput" strokeType="OUTSIDE" strokeWidth="0.0">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Text>
+         <Text fx:id="notReadInput" strokeType="OUTSIDE" strokeWidth="0.0">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Text>
+      </TextFlow>
+      <Text fx:id="stateTxt" layoutX="123.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+
+      </Text>
+      <Text fx:id="stackTxt" layoutX="123.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="verdict" layoutX="21.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Verdict:" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="verdictTxt" layoutX="123.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

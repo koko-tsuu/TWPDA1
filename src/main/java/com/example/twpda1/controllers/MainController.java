@@ -1,9 +1,12 @@
 package com.example.twpda1.controllers;
 
 import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
 
 import java.io.BufferedReader;
@@ -14,14 +17,56 @@ import java.io.IOException;
 public class MainController {
     @FXML
     private AnchorPane rootPane; // The root AnchorPane in main-view.fxml
+    @FXML
+    private Button Step;
+    @FXML
+    private Button Reset;
     private TWPDAController twpdaController;
     private LogicController logicController;
+    @FXML
+    private TextArea textField;
+    @FXML
+    private Button runBtn;
+    @FXML
+    private Text promptText;
+    @FXML
+    private Button uploadBtn;
+    @FXML
+    private Text stateTxt;
+
+    @FXML
+    private Text state;
+
+    @FXML
+    private Text readInput;
+
+    @FXML
+    private Text notReadInput;
+
+    @FXML
+    private Text stack;
+
+    @FXML
+    private Text stackTxt;
+
+    @FXML
+    private Text string;
+
+    @FXML
+    private TextFlow stringTxt;
+
+    @FXML
+    private Text verdict;
+
+    @FXML
+    private Text verdictTxt;
+
 
 
     //reference code in choosing a file and reading it asynchronously
     //https://edencoding.com/how-to-open-edit-sync-and-save-a-text-file-in-javafx/
     @FXML
-    private void chooseFile(ActionEvent event) {
+    private void chooseFile() {
         FileChooser fileChooser = new FileChooser();
         //only allow text files to be selected using chooser
         fileChooser.getExtensionFilters().add(
@@ -35,6 +80,18 @@ public class MainController {
         if(fileToLoad != null){
             readFileAsync(fileToLoad);
         }
+    }
+
+    @FXML
+    public void makeAppear() {
+        Step.setVisible(true);
+        Reset.setVisible(true);
+        logicController.isAccepted(textField.getText());
+    }
+
+    @FXML
+    public void promptInput() {
+        chooseFile();
     }
 
     private void readFileAsync(File fileToLoad) {
@@ -54,20 +111,19 @@ public class MainController {
 
         task.setOnSucceeded(event -> {
             String fileContents = task.getValue();
-            // Do something with the file contents, such as displaying in a TextArea
-            // For demonstration, we'll just print the contents
-            twpdaController = new TWPDAController(rootPane);
+            runBtn.setVisible(true);
+            promptText.setVisible(true);
+            textField.setVisible(true);
+            uploadBtn.setVisible(false);
+            twpdaController = new TWPDAController();
             twpdaController.readAndConvert(fileContents);
-            logicController = new LogicController(twpdaController);
+            logicController = new LogicController(twpdaController, stateTxt, state, stackTxt, stack, stringTxt, string, verdict, verdictTxt, Step, Reset, readInput, notReadInput);
             logicController.initializeTWPDA();
-            logicController.isAccepted();
-
         });
 
         Thread thread = new Thread(task);
         thread.start();
     }
 
-    //process the file
 
 }
