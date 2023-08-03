@@ -1,23 +1,23 @@
 4
-A B C D
+q0 q1 q2 q3
 3
-a b c
+a b
 ¢
 $
-3
-a b Z
+2
+a b
 10
-A ¢ Z 1 A Z
-A a Z 1 A a
-A b Z 0 B Z
-B b Z 1 B Z
-B c Z -1 C Z
-C b a -1 C Z
-C a Z 1 D Z
-D $ * 1 D Z
-D c b 1 D Z
-D b Z 1 D b
-*
-A
+q0 a λ 1 q0 a
+q0 ¢ λ 1 q0 λ
+q0 b λ 0 q1 λ
+q1 b λ 1 q1 λ
+q1 c λ -1 q2 λ
+q2 b a -1 q2 λ
+q2 a λ 1 q3 λ
+q3 c b 1 q3 λ
+q3 b λ 1 q3 b
+q3 $ Z 1 q3 λ
+Z
+q0
 1
-D
+q3
