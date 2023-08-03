@@ -193,12 +193,13 @@ public class LogicController {
 
         verdict.setVisible(true);
         verdictTxt.setVisible(true);
-        verdictTxt.setText(String.valueOf(isAccepted).toUpperCase());
 
         if(isAccepted) {
+            verdictTxt.setText("ACCEPTED");
             verdictTxt.setFill(Color.GREEN);
             verdictTxt.setFont(Font.font("System", FontWeight.BOLD, 14));
         } else {
+            verdictTxt.setText("REJECTED");
             verdictTxt.setFill(Color.RED);
             verdictTxt.setFont(Font.font("System", FontWeight.BOLD, 14));
         }
