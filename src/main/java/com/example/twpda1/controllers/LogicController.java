@@ -229,6 +229,11 @@ public class LogicController {
         List<String> matchingTransitions;
         boolean hasSet = false;
 
+        //if lambda, represent it as λ symbol internally
+        if(currentInput == ' ') {
+            currentInput = 'λ';
+        }
+
         //find the transition that accepts currentInput as an input
         matchingTransitions = findTransitionsForInput(currentTransitions, currentInput);
 

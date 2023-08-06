@@ -8,7 +8,7 @@
 //list of pushdown symbols
 //number of transitions
 //transitions in the format of 
-//(state) (input) (pushdown) (dir) (state) (pushdown)
+//(state) (input) (pushdown symbol) (move direction) (state) (pushdown symbol)
 //initial pushdown symbol
 //start state
 //number of final states

@@ -1,30 +1,8 @@
 package com.example.twpda1.controllers;
 
-import javafx.beans.binding.Bindings;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.geometry.Point2D;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.control.ContentDisplay;
-import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.Polygon;
-import javafx.scene.shape.QuadCurve;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.transform.Rotate;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 public class TWPDAController {
 
@@ -45,12 +23,7 @@ public class TWPDAController {
     public String startState = "";
     public List<String> finalStates = new ArrayList<>();
 
-    public List<StackPane> circlesList = new ArrayList<>();
     public String initPSymbol = "";
-
-    private double circleRadius = 30; // Set the radius of the circle (adjust as needed)
-    private double circleX = 200; // Set the X position of the circle (adjust as needed)
-    private double circleY = 200; // Set the Y position of the circle (adjust as needed)
 
     //convert the file content to figures
     public void readAndConvert(String fileContents) {

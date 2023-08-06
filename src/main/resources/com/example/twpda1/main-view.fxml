@@ -21,12 +21,6 @@
                   <MenuItem mnemonicParsing="false" text="New Window" fx:id="newWin" onAction="#openNewWindow"/>
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-                  <MenuItem mnemonicParsing="false" text="Machine Definition File Format" />
-            </items>
-          </Menu>
         </menus>
       </MenuBar>
       <TextArea fx:id="textField" layoutX="204.0" layoutY="52.0" maxHeight="33.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="343.0" visible="false">
