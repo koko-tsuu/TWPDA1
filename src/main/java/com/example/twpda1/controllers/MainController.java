@@ -1,13 +1,17 @@
 package com.example.twpda1.controllers;
 
+import com.example.twpda1.app.MainApp;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -87,6 +91,21 @@ public class MainController {
         Step.setVisible(true);
         Reset.setVisible(true);
         logicController.isAccepted(textField.getText());
+    }
+
+    public void openNewWindow() {
+        try {
+            Stage newStage = new Stage();
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("/com/example/twpda1/main-view.fxml"));
+            Scene newScene = new Scene(fxmlLoader.load(), 600, 355);
+
+            newStage.setTitle("Two Way Pushdown Automata");
+            newStage.setScene(newScene);
+            newStage.setResizable(false);
+            newStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
