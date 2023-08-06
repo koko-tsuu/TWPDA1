@@ -1,15 +1,14 @@
-//number of states
-//list of states
-//number of inputs
-//list of inputs
-//left endmarker
-//right endmarker
-//number of pushdown symbols
-//list of pushdown symbols
-//number of transitions
-//transitions in the format of 
-//(state) (input) (pushdown symbol) (move direction) (state) (pushdown symbol)
-//initial pushdown symbol
-//start state
-//number of final states
-//list of final states
+// number of states
+// list of states
+// number of inputs in the set
+// list of inputs in the set
+// left endmarker 
+// right endmarker
+// number of pushdown symbols
+// list of pushdown symbols
+// number of transitions
+// transitions in the format of q a Z d q' w
+// initial pushdown symbol
+// start state
+// number of final states
+// list of final states
